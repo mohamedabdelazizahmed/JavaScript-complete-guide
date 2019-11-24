@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Interaction</title>
+    <style>
+        .red-bg{
+            background-color: red;
+            color: white;
+        }
+        .visible{
+            display: block;
+        }
+        .invisible{
+            display: none;
+        }
+    </style>
+    <!-- 
+        defer = > run after code parser
+    -->
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Dive into The DoM</h1>
+    </header>
+    <section class="red-bg visible">
+        <ul>
+            <li>Item1</li>
+            <li class="list-item">Item 2</li>
+            <li class="list-item">Item 3</li>
+        </ul>
+    </section>
+    <button>Toggle Visibility</button>
+
+    <div>
+        <input type="text" value="default-text">
+    </div>
+ <!-- <ul>
+     <li>Item1</li>
+     <li class="list-item">Item 2</li>
+     <li class="list-item">Item 3</li>
+ </ul>    -->
+<!--
+    if change the value attribute you must select again and console.dir again 
+    if set value using javascript NOT refelacted to value in DOM 
+-->
+ <!-- <input type="text" value="default-text"> -->
+</body>
+</html>
