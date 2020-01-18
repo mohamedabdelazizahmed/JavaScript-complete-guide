@@ -279,19 +279,19 @@ const renderMovies = (filter = '') => {
 const addMovieHandler = () => {
     const title = document.getElementById("title").value;
     const extraName = document.getElementById("extra-name").value;
-    const exteraValue = document.getElementById("extra-value").value;
+    const extraValue = document.getElementById("extra-value").value;
 
-    console.log(title, exteraValue, extraName);
+    console.log(title, extraValue, extraName);
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
-        exteraValue.trim() == '') {
+        extraValue.trim() == '') {
         return;
     }
     const newMovie = {
         info: {
             title,
-            [extraName]: exteraValue
+            [extraName]: extraValue
         },
         id: Math.random().toString()
     }
@@ -505,9 +505,9 @@ const renderMovies = (filter = '') => {
 const addMovieHandler = () => {
     const title = document.getElementById("title").value;
     const extraName = document.getElementById("extra-name").value;
-    const exteraValue = document.getElementById("extra-value").value;
+    const extraValue = document.getElementById("extra-value").value;
 
-    console.log(title, exteraValue, extraName);
+    console.log(title, extraValue, extraName);
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
@@ -517,7 +517,7 @@ const addMovieHandler = () => {
     const newMovie = {
         info: {
             title,
-            [extraName]: exteraValue
+            [extraName]: extraValue
         },
         id: Math.random().toString(),
         getFormattedTitle: function () {
@@ -541,9 +541,9 @@ const addMovieHandler = () => {
 const addMovieHandler = () => {
     const title = document.getElementById("title").value;
     const extraName = document.getElementById("extra-name").value;
-    const exteraValue = document.getElementById("extra-value").value;
+    const extraValue = document.getElementById("extra-value").value;
 
-    console.log(title, exteraValue, extraName);
+    console.log(title, extraValue, extraName);
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
@@ -553,7 +553,7 @@ const addMovieHandler = () => {
     const newMovie = {
         info: {
             title,
-            [extraName]: exteraValue
+            [extraName]: extraValue
         },
         id: Math.random().toString(),
         getFormattedTitle() {
@@ -582,17 +582,17 @@ const addMovieHandler = () => {
     const extraName = document.getElementById("extra-name").value;
     const exteraValue = document.getElementById("extra-value").value;
 
-    console.log(title, exteraValue, extraName);
+    console.log(title, extraValue, extraName);
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
-        exteraValue.trim() == '') {
+        extraValue.trim() == '') {
         return;
     }
     const newMovie = {
         info: {
             title,
-            [extraName]: exteraValue
+            [extraName]: extraValue
         },
         id: Math.random().toString(),
         getFormattedTitle() {
