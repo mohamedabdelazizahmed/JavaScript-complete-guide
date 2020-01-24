@@ -133,7 +133,7 @@ const addMovieHandler = () => {
     }
     const newMovie = {
         // info is nested object 
-        info: { 
+        info: {
             // dynamic property value only if property name has equal name of value write short BETTER THAN title:title 
             title,
             // dynamic property name and value using square bracket 
@@ -329,7 +329,7 @@ const anotherPerson = person;
 person.age = 30;
 console.log(person);
 console.log(anotherPerson);// as same person in memory because it's reference 
-const person2 = { ...person }; // it's key values in person and merge it  in obj person2
+const person2 = { ...person }; // it's all keys and values in person and merge it  in obj person2
 console.log(person2); // it's new objected copy 
 person.age = 31;
 console.log(person2); // still age =30
@@ -337,10 +337,10 @@ person.hobbies.push('cooking'); // added cooking  in hobbies in person
 console.log(person); // reference value array 
 // reference value array === reference value array in object person NOT COPIED :( 
 console.log(person2);
-// pull all property  in person  and overwrite property age and new array in hobbies array reference value
+// pull all property  in person  and overwrite property age and new array in hobbies set array reference value
 const person3 = { ...person, age: 29, hobbies: [...person.hobbies] };
 console.log(person);
-console.log(person3);
+console.log(person3);  //{name:"Max" , hobbies:Array(3) , age:29}
 
 console.log(person.hobbies.pop());
 console.log(person);
@@ -351,7 +351,7 @@ console.log(person3);
 
 const person = { name: 'Max' };
 const person2 = Object.assign({}, person); // merge key values in person object in new  object 
-console.log(person2);
+console.log(person2); // create new object person2
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  Object Destructuring
@@ -384,7 +384,8 @@ const renderMovies = (filter = '') => {
         const { info, ...otherProps } = movie;
         console.log(info);
         console.log(otherProps);
-        const { title: movieTitle } = info; // to change name title variable pull out  assign new name in extracted variable
+        // to change name title variable pull out  assign new name in extracted variable
+        const { title: movieTitle } = info;
         let text = movieTitle + ' - ';
         for (const key in info) {
             if (key !== 'title') {
@@ -414,9 +415,9 @@ const renderMovies = (filter = '') => {
 const renderMovies = (filter = '') => {
     const movieList = document.getElementById('movie-list'); //ul
     if (movies.length === 0) {
-        movieList.classList.remove('visiable');
+        movieList.classList.remove('visible');
     } else {
-        movieList.classList.add('visiable');
+        movieList.classList.add('visible');
     }
     movieList.innerHTML = '';
     const filteredMovies = !filter
@@ -433,8 +434,14 @@ const renderMovies = (filter = '') => {
 
         const { info, ...otherProps } = movie;
         console.log(info);
+        //  OR
+        // if (info) {
+        // }
+        // if (!movie.info ==undefined) {
+        // }
         console.log(otherProps);
-        const { title: movieTitle } = info; // to change name title varible pull out  assign new name in extracted varb
+        // to change name title variable pull out  assign new name in extracted variable
+        const { title: movieTitle } = info;
         let text = movieTitle + ' - ';
         for (const key in info) {
             if (key !== 'title') {
@@ -464,9 +471,9 @@ const renderMovies = (filter = '') => {
 const renderMovies = (filter = '') => {
     const movieList = document.getElementById('movie-list'); //ul
     if (movies.length === 0) {
-        movieList.classList.remove('visiable');
+        movieList.classList.remove('visible');
     } else {
-        movieList.classList.add('visiable');
+        movieList.classList.add('visible');
     }
     movieList.innerHTML = '';
     const filteredMovies = !filter
@@ -484,9 +491,11 @@ const renderMovies = (filter = '') => {
         const { info, ...otherProps } = movie;
         console.log(info);
         console.log(otherProps);
-        //const { title: movieTitle } = info; // to change name title varible pull out  assign new name in extracted varb
+        // to change name title variable pull out  assign new name in extracted variable
+        //const { title: movieTitle } = info;
         // let text = movieTitle.toUpperCase() + ' - ';
-        let text = movie.getFormattedTitle() + ' - ';
+        // const { getFormattedTitle }  =  movie;
+        let text = movie.getFormattedTitle() + ' - ';  // show the addMovieHandler 
         for (const key in info) {
             if (key !== 'title') {
                 text = text + `${key} : ${info[key]}`;
@@ -499,8 +508,10 @@ const renderMovies = (filter = '') => {
 };
 
 /**
+ * @method addMovieHandler
  * Introducing "this"
  * @version 2
+ * add function getFormattedTitle
  */
 const addMovieHandler = () => {
     const title = document.getElementById("title").value;
@@ -511,7 +522,7 @@ const addMovieHandler = () => {
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
-        exteraValue.trim() == '') {
+        extraValue.trim() == '') {
         return;
     }
     const newMovie = {
@@ -521,6 +532,7 @@ const addMovieHandler = () => {
         },
         id: Math.random().toString(),
         getFormattedTitle: function () {
+            // look in newMovie object and access info and title
             return this.info.title.toUpperCase();
         }
     }
@@ -528,7 +540,6 @@ const addMovieHandler = () => {
     movies.push(newMovie);
     console.log(movies);
     renderMovies();
-
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // The Method Shorthand Syntax
@@ -547,7 +558,7 @@ const addMovieHandler = () => {
 
     if (title.trim() === '' ||
         extraName.trim() == '' ||
-        exteraValue.trim() == '') {
+        extraValue.trim() == '') {
         return;
     }
     const newMovie = {
@@ -556,6 +567,7 @@ const addMovieHandler = () => {
             [extraName]: extraValue
         },
         id: Math.random().toString(),
+        // the short way to define function in object 
         getFormattedTitle() {
             return this.info.title.toUpperCase();
         }
@@ -566,7 +578,6 @@ const addMovieHandler = () => {
     renderMovies();
 
 }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  The "this" Keyword And Its Strange Behavior
 ///////////////////////////////////////////////
@@ -580,7 +591,7 @@ const addMovieHandler = () => {
 const addMovieHandler = () => {
     const title = document.getElementById("title").value;
     const extraName = document.getElementById("extra-name").value;
-    const exteraValue = document.getElementById("extra-value").value;
+    const extraValue = document.getElementById("extra-value").value;
 
     console.log(title, extraValue, extraName);
 
@@ -611,7 +622,7 @@ const addMovieHandler = () => {
     renderMovies();
 
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  call() and apply()
 ///////////////////////////////////
 /**
@@ -631,9 +642,9 @@ const addMovieHandler = () => {
 const renderMovies = (filter = '') => {
     const movieList = document.getElementById('movie-list'); //ul
     if (movies.length === 0) {
-        movieList.classList.remove('visiable');
+        movieList.classList.remove('visible');
     } else {
-        movieList.classList.add('visiable');
+        movieList.classList.add('visible');
     }
     movieList.innerHTML = '';
     const filteredMovies = !filter
@@ -651,14 +662,14 @@ const renderMovies = (filter = '') => {
         const { info, ...otherProps } = movie;
         console.log(info);
         console.log(otherProps);
-        //const { title: movieTitle } = info; // to change name title varible pull out  assign new name in extracted varb
+        //const { title: movieTitle } = info; // to change name title variable pull out  assign new name in extracted varb
         // let text = movieTitle.toUpperCase() + ' - ';
 
         //  it's refer the window object Not The movie object when call 
         let { getFormattedTitle } = movie;
         // getFormattedTitle = getFormattedTitle.bind(movie) // movie refer the this
-        // let text = getFormattedTitle.call(movie) + ' - '; // addtional argument using sperated ,,,,
-        // let text = getFormattedTitle.apply(movie,[,,,,]) + ' - '; // addtional argument using sperated [,,,,]
+        // let text = getFormattedTitle.call(movie) + ' - '; // additional argument using separated ,,,,
+        // let text = getFormattedTitle.apply(movie,[,,,,]) + ' - '; // additional argument using separated [,,,,]
 
         for (const key in info) {
             if (key !== 'title') {
@@ -672,6 +683,7 @@ const renderMovies = (filter = '') => {
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  What the Browser (Sometimes) Does to "this"
+//  "this" and Arrow Functions
 //////////////////////////////////////////////////
 
 /**
@@ -687,8 +699,8 @@ const searchMovieHandler = () => {
  * SEARCH MOVIE
  */
 const searchMovieHandler = function () {
-    console.log(this); //  this =>refer  to search btn 
-
+    console.log(this); //  this =>REFER TO DOM ELEMENT THAT TRIGGER THE EVENT 
+    // when use ()=>{ console.log(this)} //this => refer to window in this arrow function 
     const filterTerm = document.getElementById('filter-title').value;
     renderMovies(filterTerm);
 }
@@ -703,6 +715,8 @@ const members = {
     people: ['Max', 'Manuel'],
     getTeamMembers() {
         this.people.forEach(p => {
+            // this refer to object members in arrow function
+            // arrow function doesn't change bind inside forEach function 
             console.log(this);
             console.log(p + ' - ' + this.teamName);
         })
@@ -714,6 +728,7 @@ const members = {
     people: ['Max', 'Manuel'],
     getTeamMembers() {
         this.people.forEach(function (p) {
+            // this refer to window in  function keyword inside forEach function
             console.log(this);
             console.log(p + ' - ' + this.teamName); // Max -undefined
         })
@@ -723,18 +738,33 @@ members.getTeamMembers();
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //  Getters & Setters
 /////////////////////////////
+// for example 
+const newMovie = {
+    // info is nested object 
+    info: {
+        set title(val){
+            if(val.trim === ''){
+                this._title = 'DEFAULT';
+                return;
+            }
+            this._title = val;
+        },
+        // dynamic property value only if property name has equal name of value write short BETTER THAN title:title 
+        get title(){
+            return this._title.toUpperCase();
+        },
+        // dynamic property name and value using square bracket 
+        [extraName]: extraValue
+    },
+    id: Math.random().toString()
+}
 
+// To use set & get 
+console.log(new.info.title);
+// when implement the get and hashing set => SET  READ OLY PROPERTY 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////  Module Is finished  ////////////////////////////
 
 
 
